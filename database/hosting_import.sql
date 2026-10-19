@@ -422,7 +422,7 @@ CREATE TABLE `users` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'System Administrator','admin@mhofuyemukomo.local','$2y$12$XkLskurFIK4v9oOlNaY9w.lS0AkKdVc3HD9Hd5Kgq6WnOpJx7WR0G','admin','active','2026-10-18 19:07:31');
+INSERT INTO `users` VALUES (1,'System Administrator','admin@mhofuyemukomo.com','$2y$12$6Xh5ZC55kbpWoc1XTbkX/OIiL.MYncVZ9hg2JMihtjwGjXeD282qy','admin','active','2026-10-18 19:07:31');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 DROP TABLE IF EXISTS `v_dashboard_stats`;
 /*!50001 DROP VIEW IF EXISTS `v_dashboard_stats`*/;
@@ -478,7 +478,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_results     = utf8mb4 */;
 /*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 SQL SECURITY DEFINER */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `v_dashboard_stats` AS select (select count(0) from `products` where `products`.`status` = 'active') AS `total_products`,(select coalesce(sum(`products`.`quantity`),0) from `products` where `products`.`status` = 'active') AS `stock_units`,(select coalesce(sum(`products`.`quantity` * `products`.`buying_price`),0) from `products` where `products`.`status` = 'active') AS `stock_value`,(select coalesce(sum(`products`.`quantity` * `products`.`selling_price`),0) from `products` where `products`.`status` = 'active') AS `retail_value`,(select count(0) from `products` where `products`.`status` = 'active' and `products`.`quantity` <= `products`.`minimum_stock`) AS `low_stock`,(select count(0) from `products` where `products`.`status` = 'active' and `products`.`quantity` <= 0) AS `out_of_stock`,(select count(0) from `newsletter_subscribers` where `newsletter_subscribers`.`status` = 'active') AS `subscribers`,(select count(0) from `contacts`) AS `enquiries`,(select count(0) from `blogs` where `blogs`.`status` = 'published') AS `published_blogs`,(select count(0) from `events` where `events`.`status` = 'published' and `events`.`event_date` >= curdate()) AS `upcoming_events` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
@@ -491,7 +491,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_results     = utf8mb4 */;
 /*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 SQL SECURITY DEFINER */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `v_low_stock` AS select `p`.`id` AS `id`,`p`.`name` AS `name`,`p`.`sku` AS `sku`,`p`.`quantity` AS `quantity`,`p`.`minimum_stock` AS `minimum_stock`,`p`.`unit` AS `unit`,`c`.`name` AS `category` from (`products` `p` left join `categories` `c` on(`c`.`id` = `p`.`category_id`)) where `p`.`status` = 'active' and `p`.`quantity` <= `p`.`minimum_stock` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
@@ -504,7 +504,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_results     = utf8mb4 */;
 /*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 SQL SECURITY DEFINER */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `v_stock_history` AS select `t`.`id` AS `id`,`t`.`created_at` AS `created_at`,`t`.`type` AS `type`,`t`.`quantity` AS `quantity`,`t`.`stock_before` AS `stock_before`,`t`.`stock_after` AS `stock_after`,`t`.`reason` AS `reason`,`t`.`reference_no` AS `reference_no`,`p`.`name` AS `product_name`,`p`.`sku` AS `sku`,`u`.`name` AS `user_name` from ((`stock_transactions` `t` left join `products` `p` on(`p`.`id` = `t`.`product_id`)) left join `users` `u` on(`u`.`id` = `t`.`user_id`)) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
