@@ -1,8 +1,8 @@
 <?php
 $admin_title='Dashboard';
 include '_header.php';
-$stats=$pdo->query('SELECT * FROM v_dashboard_stats')->fetch() ?: [];
-$movements=$pdo->query("SELECT * FROM v_stock_history ORDER BY created_at DESC LIMIT 8")->fetchAll();
+$stats=dashboard_stats($pdo);
+$movements=stock_history($pdo,'',[],8);
 $cats=$pdo->query("SELECT COALESCE(c.name,'Uncategorised') name,SUM(p.quantity) qty FROM products p LEFT JOIN categories c ON c.id=p.category_id WHERE p.status='active' GROUP BY c.id,c.name ORDER BY qty DESC LIMIT 8")->fetchAll();
 $months=$pdo->query("SELECT DATE_FORMAT(created_at,'%Y-%m') m,SUM(CASE WHEN type='IN' THEN quantity ELSE 0 END) stock_in,SUM(CASE WHEN type='OUT' THEN quantity ELSE 0 END) stock_out FROM stock_transactions WHERE created_at >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH) GROUP BY DATE_FORMAT(created_at,'%Y-%m') ORDER BY m ASC")->fetchAll();
 $fmt=static fn($v)=>number_format((float)$v,0);
