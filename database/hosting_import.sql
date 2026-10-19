@@ -1,9 +1,3 @@
-﻿-- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
---
--- Host: localhost    Database: inventory_manager_v2
--- ------------------------------------------------------
--- Server version	10.4.32-MariaDB
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -723,6 +717,4 @@ SET character_set_client = utf8;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2026-10-19  2:54:26
-
-
 
