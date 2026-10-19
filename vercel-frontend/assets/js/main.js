@@ -1,4 +1,4 @@
-﻿const API_BASE = window.API_BASE || 'https://YOUR-PHP-HOST/api'; // replace with your PHP host API base
+﻿const API_BASE = window.API_BASE || 'https://mhofu.freehosting.dev/api'; // replace with your PHP host API base
 async function loadFeatured(){
   const el = document.getElementById('featured-products');
   if(!el) return;
@@ -19,4 +19,5 @@ async function loadFeatured(){
 }
 function escapeHtml(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
 document.addEventListener('DOMContentLoaded',loadFeatured);
+
 
