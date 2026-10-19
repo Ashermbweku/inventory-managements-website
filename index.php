@@ -1,5 +1,6 @@
 <?php
 require 'config/db.php';
+require_once __DIR__.'/includes/functions.php';
 $services=$pdo->query("SELECT * FROM services WHERE status='published' ORDER BY sort_order,id LIMIT 6")->fetchAll();
 $blogs=$pdo->query("SELECT * FROM blogs WHERE status='published' ORDER BY published_at DESC,id DESC LIMIT 3")->fetchAll();
 $events=$pdo->query("SELECT * FROM events WHERE status='published' AND event_date>=CURDATE() ORDER BY event_date ASC LIMIT 3")->fetchAll();

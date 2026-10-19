@@ -1,4 +1,4 @@
-﻿const API_BASE = window.API_BASE || 'https://mhofu.freehosting.dev/api'; // replace with your PHP host API base
+﻿const API_BASE = window.API_BASE || 'https://mhofu-app.infinityfreeapp.com/api';
 async function loadFeatured(){
   const el = document.getElementById('featured-products');
   if(!el) return;
