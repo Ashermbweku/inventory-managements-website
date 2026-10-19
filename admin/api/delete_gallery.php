@@ -1,0 +1,1 @@
+<?php require '../../config/db.php';require '../../includes/functions.php';require '../../includes/auth.php';require_admin();$id=(int)($_GET['id']??0);$pdo->prepare('DELETE FROM gallery WHERE id=?')->execute([$id]);json_response(true,'Gallery image deleted.');
