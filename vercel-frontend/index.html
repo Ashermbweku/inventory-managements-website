@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mhofu Yemukomo Company - Inventory Management</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo brand-image" href="index.html"><img src="assets/img/mhofu-logo.png" alt="Mhofu Yemukomo Company"></a>
+    <button class="menu-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    <nav class="main-nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="products.html">Products</a>
+      <a href="events.html">Events</a>
+      <a href="blogs.html">Blogs</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-dl-link" href="assets/downloads/Mhofu-Inventory-Manager.apk" download><i class="fa-solid fa-download"></i> Download App</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-dl" href="assets/downloads/Mhofu-Inventory-Manager.apk" download><i class="fa-solid fa-mobile-screen-button"></i> Download App</a>
+      <a class="btn btn-primary" href="contact.html"><i class="fa-solid fa-paper-plane"></i> Contact Us</a>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-bg" data-hero-slides='[{"img":"assets/img/site/hero-1.jpg"},{"img":"assets/img/site/hero-2.jpg"},{"img":"assets/img/site/hero-3.jpg"}]'></div>
+      <div class="hero-content">
+        <span class="eyebrow">Mhofu Yemukomo Company</span>
+        <h1>Smart Inventory <span class="typewriter" data-type-words='["Management","Solutions","Excellence"]'></span></h1>
+        <p>Stock control, sales tracking and business insights in one easy-to-use platform.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="products.html"><i class="fa-solid fa-boxes-stacked"></i> Browse Products</a>
+          <a class="btn btn-ghost" href="assets/downloads/Mhofu-Inventory-Manager.apk" download><i class="fa-solid fa-download"></i> Download APK</a>
+        </div>
+      </div>
+    </section>
+    <section class="section download-band">
+      <div class="container download-inner">
+        <div>
+          <h2>Get the Mobile App</h2>
+          <p>Manage stock on the go. Download the Mhofu Inventory Manager app for Android.</p>
+        </div>
+        <div class="download-actions">
+          <a class="btn btn-dl" href="assets/downloads/Mhofu-Inventory-Manager.apk" download><i class="fa-solid fa-download"></i> Download Now</a>
+          <a class="btn btn-ghost" href="assets/downloads/Mhofu-Calculator.apk" download><i class="fa-solid fa-calculator"></i> Calculator App</a>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">Featured Products</span><h2>Our Top Picks</h2></div>
+          <a class="btn btn-ghost" href="products.html">View All</a>
+        </div>
+        <div class="grid grid-3" id="featured-products"></div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Mhofu Yemukomo Company</h3>
+        <p>Your trusted partner for inventory management solutions.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><div class="container"><p>&copy; <span id="year"></span> Mhofu Yemukomo Company. All rights reserved.</p></div></div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
