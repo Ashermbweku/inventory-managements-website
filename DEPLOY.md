@@ -9,7 +9,7 @@ This site is PHP + MySQL, so it needs a PHP host. **Vercel cannot host it.**
    - MySQL host (e.g. `sqlXXX.infinityfree.com`)
    - Database name (e.g. `if0_XXXXXXXX_inventory`)
    - Username (e.g. `if0_XXXXXXXX`)
-   - Password (as chosen)
+   - Password (as set in the panel)
 
 ## 2. Import the database
 1. Open **phpMyAdmin** from the hosting panel.

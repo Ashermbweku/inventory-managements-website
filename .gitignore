@@ -1,6 +1,7 @@
 # Environment / secrets
 .env
 .env.local
+.env.hosting
 
 # Runtime uploads (keep the folders, ignore user content)
 uploads/*/*
