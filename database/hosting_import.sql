@@ -644,68 +644,6 @@ INSERT INTO `users` VALUES (1,'System Administrator','admin@mhofuyemukomo.local'
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Temporary table structure for view `v_dashboard_stats`
---
-
-DROP TABLE IF EXISTS `v_dashboard_stats`;
-/*!50001 DROP VIEW IF EXISTS `v_dashboard_stats`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-
-/*!50001 DROP VIEW IF EXISTS `v_low_stock`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-
-/*!50001 DROP VIEW IF EXISTS `v_stock_history`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `v_dashboard_stats` AS select (select count(0) from `products` where `products`.`status` = 'active') AS `total_products`,(select coalesce(sum(`products`.`quantity`),0) from `products` where `products`.`status` = 'active') AS `stock_units`,(select coalesce(sum(`products`.`quantity` * `products`.`buying_price`),0) from `products` where `products`.`status` = 'active') AS `stock_value`,(select coalesce(sum(`products`.`quantity` * `products`.`selling_price`),0) from `products` where `products`.`status` = 'active') AS `retail_value`,(select count(0) from `products` where `products`.`status` = 'active' and `products`.`quantity` <= `products`.`minimum_stock`) AS `low_stock`,(select count(0) from `products` where `products`.`status` = 'active' and `products`.`quantity` <= 0) AS `out_of_stock`,(select count(0) from `newsletter_subscribers` where `newsletter_subscribers`.`status` = 'active') AS `subscribers`,(select count(0) from `contacts`) AS `enquiries`,(select count(0) from `blogs` where `blogs`.`status` = 'published') AS `published_blogs`,(select count(0) from `events` where `events`.`status` = 'published' and `events`.`event_date` >= curdate()) AS `upcoming_events` */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
--- Final view structure for view `v_low_stock`
---
-
-*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `v_low_stock` AS select `p`.`id` AS `id`,`p`.`name` AS `name`,`p`.`sku` AS `sku`,`p`.`quantity` AS `quantity`,`p`.`minimum_stock` AS `minimum_stock`,`p`.`unit` AS `unit`,`c`.`name` AS `category` from (`products` `p` left join `categories` `c` on(`c`.`id` = `p`.`category_id`)) where `p`.`status` = 'active' and `p`.`quantity` <= `p`.`minimum_stock` */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
--- Final view structure for view `v_stock_history`
---
-
-*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `v_stock_history` AS select `t`.`id` AS `id`,`t`.`created_at` AS `created_at`,`t`.`type` AS `type`,`t`.`quantity` AS `quantity`,`t`.`stock_before` AS `stock_before`,`t`.`stock_after` AS `stock_after`,`t`.`reason` AS `reason`,`t`.`reference_no` AS `reference_no`,`p`.`name` AS `product_name`,`p`.`sku` AS `sku`,`u`.`name` AS `user_name` from ((`stock_transactions` `t` left join `products` `p` on(`p`.`id` = `t`.`product_id`)) left join `users` `u` on(`u`.`id` = `t`.`user_id`)) */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
